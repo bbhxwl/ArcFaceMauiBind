@@ -23,6 +23,9 @@
 	  <None Remove="arm64-v8a\libarcsoft_face_engine.so" />
 	  <None Remove="armeabi-v7a\libarcsoft_face.so" />
 	  <None Remove="armeabi-v7a\libarcsoft_face_engine.so" />
+	  <None Include="Platforms\Tizen\ArcHelper.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -36,15 +39,18 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Platforms\Android\" />
-	  <Folder Include="Platforms\iOS\" />
-	  <Folder Include="Platforms\MacCatalyst\" />
-	  <Folder Include="Platforms\Tizen\" />
-	  <Folder Include="Platforms\Windows\" />
-	</ItemGroup>
   <ItemGroup Condition="$(TargetFramework.Contains('-android'))">
     <EmbeddedJar Include="arcsoft_face.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Platforms\iOS\ArcHelper.cs">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Update="Platforms\MacCatalyst\ArcHelper.cs">
+      <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Update="Platforms\Windows\ArcHelper.cs">
+      <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+    </Compile>
   </ItemGroup>
 </Project>
